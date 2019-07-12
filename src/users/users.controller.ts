@@ -1,5 +1,5 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { create } from 'domain';
+import { Controller, Get, Post, Body } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto'
 
 @Controller('users')
 export class UsersController {
@@ -9,7 +9,7 @@ export class UsersController {
     }
 
     @Post()
-    create(): string {
-        return 'Create user';
+    create(@Body() createUserDto: CreateUserDto): string {
+        return `First name: ${createUserDto.first_name} Last name: ${createUserDto.last_name}`;
     }
 }
